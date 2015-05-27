@@ -52,7 +52,7 @@ EXPERIMENT_DATA = {
         'session_key_prefix': 'MIT3',
         'base_view_name': 'youth-employment',
         'pageview_label': 'youth-employment',
-        'experiment_key': '',
+        'experiment_key': settings.YOUTH_EMPLOYMENT_BILL_EXPERIMENT_KEY,
         'qualtrics_sid': 'SV_5hhE4mOfYG1eaOh',
         'variants': ('o', 't', 'n', 'os', 'ts', 'ns'),
         'demographic_keys': {
@@ -305,7 +305,6 @@ class YouthEmploymentView(ExperimentViewDataMixin, TemplateView):
                                'action': 'view',
                                'label': self.pageview_label})
 
-        context['show_general'] = variant not in ('y')
         context['show_youth'] = (variant[0] == 'y')
 
         context['share_partials'] = [
